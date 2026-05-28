@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Guía completa sobre seguridad informática: phishing, malware, ingeniería social y medidas preventivas con ejemplos reales.">
+  <title>CiberSeguridad — Protégete en el Mundo Digital</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ===== NAVEGACIÓN ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#" class="nav-logo">
+        <span>🛡️</span>
+        <span>CiberSeguridad</span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#phishing">Phishing</a></li>
+        <li><a href="#malware">Malware</a></li>
+        <li><a href="#ingenieria-social">Ing. Social</a></li>
+        <li><a href="#prevencion">Prevención</a></li>
+        <li><a href="#comentarios" class="nav-cta">Comentar</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section id="hero" class="hero">
+    <div class="hero-grid-bg"></div>
+    <div class="hero-glow"></div>
+    <div class="container">
+      <div class="hero-badge">⚠️ Guía de Seguridad Informática</div>
+      <h1 class="hero-title">
+        Protégete de las<br>
+        <span class="gradient-text">Amenazas Digitales</span>
+      </h1>
+      <p class="hero-subtitle">
+        Aprende a identificar y defenderte del phishing, malware e ingeniería social
+        con ejemplos reales y medidas concretas. Sin tecnicismos innecesarios.
+      </p>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-number">3.4B</span>
+          <span class="stat-label">Emails de phishing por día</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number">94%</span>
+          <span class="stat-label">Del malware llega por email</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number">$4.5M</span>
+          <span class="stat-label">Costo promedio de un ciberataque</span>
+        </div>
+      </div>
+      <div class="hero-buttons">
+        <a href="#phishing" class="btn btn-primary">Comenzar a aprender</a>
+        <a href="#comentarios" class="btn btn-outline">Dejar comentario</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PHISHING ===== -->
+  <section id="phishing" class="content-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-icon danger">🎣</div>
+        <div>
+          <span class="section-tag danger">Amenaza #1</span>
+          <h2>Phishing</h2>
+          <p class="section-desc">Engaños diseñados para robar tus credenciales haciéndose pasar por entidades legítimas.</p>
+        </div>
+      </div>
+
+      <div class="cards-grid">
+        <div class="card">
+          <h3>¿Qué es el phishing?</h3>
+          <p>El phishing es una técnica donde el atacante se disfraza de entidad de confianza (banco, empresa, red social) para engañarte y obtener tus contraseñas, datos bancarios o información personal.</p>
+          <p style="margin-top:12px">El nombre viene de "fishing" (pesca): el atacante lanza un anzuelo y espera que alguien pique.</p>
+        </div>
+        <div class="card">
+          <h3>Tipos de phishing</h3>
+          <ul class="feature-list">
+            <li><strong>Email phishing:</strong> El más común. Emails masivos con links maliciosos.</li>
+            <li><strong>Spear phishing:</strong> Ataque dirigido con información personalizada sobre la víctima.</li>
+            <li><strong>Smishing:</strong> Phishing por SMS.</li>
+            <li><strong>Vishing:</strong> Phishing por llamada telefónica.</li>
+            <li><strong>Whaling:</strong> Spear phishing dirigido a directivos o CEOs.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Ejemplo email -->
+      <div class="example-box danger">
+        <div class="example-label">📧 Ejemplo Real — Email de Phishing</div>
+        <div class="fake-email">
+          <div class="email-field"><span class="email-key">De:</span> <span class="email-val danger-text">seguridad@paypa<u>1</u>.com</span></div>
+          <div class="email-field"><span class="email-key">Para:</span> tu@email.com</div>
+          <div class="email-field"><span class="email-key">Asunto:</span> ⚠️ Cuenta suspendida — Acción inmediata requerida</div>
+          <div class="email-body">
+            <p>Estimado cliente,</p>
+            <p>Hemos detectado <strong>actividad sospechosa</strong> en su cuenta. Por su seguridad, ha sido <strong>temporalmente suspendida</strong>.</p>
+            <p>Para reactivarla, haga clic en el siguiente enlace en las próximas <strong>24 horas</strong>:</p>
+            <span class="fake-link">www.paypal.com.cuenta-verificar.net/login</span>
+            <p><small>Si no actúa, su cuenta será eliminada permanentemente.</small></p>
+          </div>
+        </div>
+        <div class="analysis-box">
+          <h4>🔍 ¿Por qué es phishing?</h4>
+          <ul class="analysis-list">
+            <li><strong>Email falso:</strong> "paypa<u>1</u>.com" usa un '1' en lugar de 'l' — no es PayPal real.</li>
+            <li><strong>URL trampa:</strong> El dominio real es "cuenta-verificar.net", no paypal.com.</li>
+            <li><strong>Urgencia artificial:</strong> "24 horas" y "eliminación" para que no pienses con calma.</li>
+            <li><strong>Sin personalización:</strong> "Estimado cliente" en lugar de tu nombre real.</li>
+            <li><strong>Amenaza desproporcionada:</strong> Los servicios legítimos no eliminan cuentas por email.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Ejemplo SMS -->
+      <div class="example-box warning">
+        <div class="example-label">📱 Ejemplo Real — SMS Phishing (Smishing)</div>
+        <div class="sms-mockup">
+          <div class="sms-sender">BBVA</div>
+          <div class="sms-bubble">
+            Tu tarjeta ha sido bloqueada por seguridad. Verifica tus datos en: <span class="fake-link-inline">bit.ly/bb-va-seguridad</span> o llama al 555-0123
+          </div>
+        </div>
+        <div class="analysis-box">
+          <h4>🔍 Señales de alerta</h4>
+          <ul class="analysis-list">
+            <li>Los bancos <strong>nunca</strong> usan links acortados (bit.ly, tinyurl, t.co) en SMS.</li>
+            <li>El teléfono no coincide con el número oficial impreso en tu tarjeta.</li>
+            <li>No menciona tu nombre ni los últimos 4 dígitos de la tarjeta.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tips-box">
+        <h3>✅ Cómo protegerte del phishing</h3>
+        <div class="tips-grid">
+          <div class="tip"><span class="tip-icon">🔍</span><p>Verifica el dominio del remitente letra por letra antes de hacer clic.</p></div>
+          <div class="tip"><span class="tip-icon">🔗</span><p>Pasa el cursor sobre links para ver la URL real en la barra de estado.</p></div>
+          <div class="tip"><span class="tip-icon">🏦</span><p>Accede a tu banco escribiendo la URL directamente, nunca desde un email.</p></div>
+          <div class="tip"><span class="tip-icon">📞</span><p>Si dudas, llama al número oficial de la empresa (el del contrato, no el del email).</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MALWARE ===== -->
+  <section id="malware" class="content-section alt-bg">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-icon purple">🦠</div>
+        <div>
+          <span class="section-tag purple">Amenaza #2</span>
+          <h2>Malware</h2>
+          <p class="section-desc">Software malicioso diseñado para dañar, robar información o tomar control de tus dispositivos.</p>
+        </div>
+      </div>
+
+      <div class="cards-grid three-col">
+        <div class="card border-left-danger">
+          <div class="card-icon-big">🔒</div>
+          <h3>Ransomware</h3>
+          <p>Cifra todos tus archivos y pide un rescate (generalmente en Bitcoin) para devolverte el acceso. El más destructivo económicamente.</p>
+          <div class="card-case">
+            <strong>Caso real:</strong> WannaCry (2017) infectó 200,000 computadores en 150 países. Paralizó hospitales del NHS en Reino Unido. Pérdidas estimadas: $4,000 millones.
+          </div>
+        </div>
+        <div class="card border-left-warning">
+          <div class="card-icon-big">🕵️</div>
+          <h3>Spyware / Keylogger</h3>
+          <p>Se instala silenciosamente y registra todo lo que escribes: contraseñas, conversaciones, datos bancarios.</p>
+          <div class="card-case">
+            <strong>Caso real:</strong> Pegasus (NSO Group) espiaba iPhones sin que el usuario hiciera nada — solo con recibir un iMessage especial.
+          </div>
+        </div>
+        <div class="card border-left-purple">
+          <div class="card-icon-big">🐴</div>
+          <h3>Troyano</h3>
+          <p>Se disfraza de software legítimo (un programa, una extensión). Una vez instalado, abre una puerta trasera al atacante.</p>
+          <div class="card-case">
+            <strong>Caso real:</strong> Emotet llegaba como "Factura.docm" por email. Al abrirlo, instalaba malware adicional y robaba credenciales bancarias.
+          </div>
+        </div>
+        <div class="card border-left-danger">
+          <div class="card-icon-big">🤖</div>
+          <h3>Botnet</h3>
+          <p>Convierte tu dispositivo en un "zombie" controlado remotamente para lanzar ataques masivos sin que lo sepas.</p>
+          <div class="card-case">
+            <strong>Caso real:</strong> Mirai (2016) infectó millones de cámaras IP para el mayor ataque DDoS de la historia, dejando offline Twitter, Netflix y Spotify.
+          </div>
+        </div>
+        <div class="card border-left-warning">
+          <div class="card-icon-big">⛏️</div>
+          <h3>Cryptojacker</h3>
+          <p>Usa tu CPU/GPU para minar criptomonedas en secreto, ralentizando el sistema y aumentando tu factura eléctrica.</p>
+          <div class="card-case">
+            <strong>Señal de alerta:</strong> Computador lento, ventiladores a máxima velocidad y alta temperatura sin motivo aparente.
+          </div>
+        </div>
+        <div class="card border-left-purple">
+          <div class="card-icon-big">🐛</div>
+          <h3>Gusano (Worm)</h3>
+          <p>Se propaga automáticamente por redes sin intervención humana, sin necesitar un archivo huésped.</p>
+          <div class="card-case">
+            <strong>Caso real:</strong> Stuxnet (2010), creado por EEUU e Israel, saboteó físicamente centrífugas nucleares de Irán propagándose por USB.
+          </div>
+        </div>
+      </div>
+
+      <!-- Ejemplo ataque ransomware -->
+      <div class="example-box danger">
+        <div class="example-label">💻 Ataque de Ransomware — Paso a Paso</div>
+        <div class="attack-timeline">
+          <div class="attack-step">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <strong>Vector de entrada:</strong> Recibes un email con "Factura_Nov2024.docm". Parece de un proveedor conocido. Lo abres.
+            </div>
+          </div>
+          <div class="attack-step">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <strong>Trampa activada:</strong> El documento pide "Habilitar contenido para visualizarse". Al hacerlo, ejecutas una macro maliciosa.
+            </div>
+          </div>
+          <div class="attack-step">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <strong>Descarga silenciosa:</strong> La macro descarga el ransomware real desde un servidor del atacante. Tarda segundos. No hay ningún aviso.
+            </div>
+          </div>
+          <div class="attack-step">
+            <div class="step-num">4</div>
+            <div class="step-content">
+              <strong>Cifrado masivo:</strong> El ransomware cifra todos tus archivos (.docx, .pdf, .jpg, .xls) en minutos. Los renombra a "archivo.encrypted".
+            </div>
+          </div>
+          <div class="attack-step last">
+            <div class="step-num">5</div>
+            <div class="step-content">
+              <strong>Rescate:</strong> Aparece una pantalla exigiendo $500–$5,000 en Bitcoin. Sin pagar, tus archivos son irrecuperables (sin backup).
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tips-box">
+        <h3>✅ Cómo protegerte del malware</h3>
+        <div class="tips-grid">
+          <div class="tip"><span class="tip-icon">🔄</span><p>Mantén el sistema operativo y apps <strong>siempre actualizados</strong>. Los parches cierran vulnerabilidades conocidas.</p></div>
+          <div class="tip"><span class="tip-icon">🛡️</span><p>Usa un <strong>antivirus activo</strong>. En Windows, Windows Defender actualizado es suficiente.</p></div>
+          <div class="tip"><span class="tip-icon">📦</span><p>Descarga software <strong>solo de fuentes oficiales</strong>. Los cracks y torrents son vectores habituales de malware.</p></div>
+          <div class="tip"><span class="tip-icon">💾</span><p>Haz <strong>copias de seguridad</strong> regulares en disco externo desconectado y en la nube (regla 3-2-1).</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== INGENIERÍA SOCIAL ===== -->
+  <section id="ingenieria-social" class="content-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-icon warning">🎭</div>
+        <div>
+          <span class="section-tag warning">Amenaza #3</span>
+          <h2>Ingeniería Social</h2>
+          <p class="section-desc">Manipulación psicológica para conseguir que personas revelen información o realicen acciones comprometedoras.</p>
+        </div>
+      </div>
+
+      <div class="info-banner">
+        <p>💡 <strong>La vulnerabilidad más explotada no es el software — es el ser humano.</strong> Kevin Mitnick, uno de los hackers más famosos de la historia, comprometía sistemas enteros mediante llamadas telefónicas, sin explotar ningún fallo técnico.</p>
+      </div>
+
+      <div class="cards-grid">
+        <div class="card">
+          <h3>🎭 Pretexting</h3>
+          <p>El atacante inventa una historia creíble para obtener información o acceso.</p>
+          <div class="dialogue">
+            <p class="dialogue-msg">— Hola, soy Carlos del departamento de IT. Detectamos acceso no autorizado a tu cuenta. Necesito tu contraseña temporalmente para protegerla.</p>
+            <p class="dialogue-warning">⚠️ El área de IT <strong>nunca</strong> pedirá tu contraseña. Por ningún motivo. Por ningún medio.</p>
+          </div>
+        </div>
+        <div class="card">
+          <h3>📞 Vishing</h3>
+          <p>Estafa por teléfono suplantando a soporte técnico, banco o institución.</p>
+          <div class="dialogue">
+            <p class="dialogue-msg">— Le llama Soporte de Microsoft. Detectamos que su computador está infectado y enviando virus. Necesitamos acceso remoto ahora o perderá sus datos.</p>
+            <p class="dialogue-warning">⚠️ Microsoft <strong>nunca</strong> llama proactivamente a usuarios. Es una estafa clásica muy documentada.</p>
+          </div>
+        </div>
+        <div class="card">
+          <h3>🎁 Baiting (Señuelo)</h3>
+          <p>Dejar "señuelos" físicos o digitales para que la víctima los use por curiosidad.</p>
+          <div class="card-case">
+            <strong>Físico:</strong> Un pen drive con etiqueta "Nóminas 2024 — CONFIDENCIAL" encontrado en el parking. El 98% de personas lo conecta al computador.<br><br>
+            <strong>Digital:</strong> "Adobe Photoshop Full + Crack gratis". El instalador incluye un troyano.
+          </div>
+        </div>
+        <div class="card">
+          <h3>📨 CEO Fraud / BEC</h3>
+          <p>El atacante suplanta a un directivo para ordenar transferencias urgentes y "confidenciales".</p>
+          <div class="dialogue">
+            <p class="dialogue-msg">De: ceo@empresa-corp.net<br>— Necesito una transferencia urgente de $45,000 a este proveedor. Es confidencial, no lo menciones con nadie. Confirma cuando esté hecho.</p>
+            <p class="dialogue-warning">⚠️ Las empresas pierden $2,700 millones anuales por este fraude (FBI IC3 Report, 2023).</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="example-box warning">
+        <div class="example-label">🧠 Disparadores Psicológicos que Usan los Atacantes</div>
+        <div class="psych-grid">
+          <div class="psych-item">
+            <strong>⏰ Urgencia</strong>
+            <p>"Tienes 30 minutos o perderás tu cuenta." Impide que pienses con calma.</p>
+          </div>
+          <div class="psych-item">
+            <strong>😨 Miedo</strong>
+            <p>"Tu computador tiene 17 virus activos." El miedo desactiva el pensamiento crítico.</p>
+          </div>
+          <div class="psych-item">
+            <strong>👔 Autoridad</strong>
+            <p>"Soy del FBI / Microsoft / tu banco." Tendemos a obedecer figuras de autoridad sin cuestionar.</p>
+          </div>
+          <div class="psych-item">
+            <strong>🤝 Simpatía</strong>
+            <p>Primero crean rapport y confianza. Luego hacen la petición. Es difícil negarle algo a alguien "amigable".</p>
+          </div>
+          <div class="psych-item">
+            <strong>🏆 Escasez</strong>
+            <p>"Solo quedan 2 plazas, decide ahora." La escasez fuerza decisiones impulsivas.</p>
+          </div>
+          <div class="psych-item">
+            <strong>🔁 Reciprocidad</strong>
+            <p>Te dan algo primero (un regalo, información útil), luego piden algo a cambio. Te sientes en deuda.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tips-box">
+        <h3>✅ Cómo defenderte de la Ingeniería Social</h3>
+        <div class="tips-grid">
+          <div class="tip"><span class="tip-icon">🧘</span><p><strong>Para antes de actuar.</strong> La urgencia extrema es siempre una señal de alerta, no una razón para apurarse.</p></div>
+          <div class="tip"><span class="tip-icon">📞</span><p><strong>Verifica por canal independiente.</strong> Si el "banco" te llama, cuelga y llama tú al número oficial de tu tarjeta.</p></div>
+          <div class="tip"><span class="tip-icon">🔐</span><p><strong>Nunca compartas contraseñas.</strong> Ni con IT, ni con tu banco, ni con soporte. Nadie legítimo las pide.</p></div>
+          <div class="tip"><span class="tip-icon">🚫</span><p><strong>No conectes dispositivos desconocidos.</strong> Un USB encontrado puede ser un ataque deliberado ("baiting").</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PREVENCIÓN ===== -->
+  <section id="prevencion" class="content-section alt-bg">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-icon success">🛡️</div>
+        <div>
+          <span class="section-tag success">Tu Defensa</span>
+          <h2>Medidas Preventivas</h2>
+          <p class="section-desc">Herramientas y hábitos concretos para protegerte. Sin tecnicismos, sin excusas.</p>
+        </div>
+      </div>
+
+      <div class="prevention-grid">
+
+        <div class="prev-card highlight">
+          <div class="prev-icon">🔑</div>
+          <h3>Gestor de Contraseñas</h3>
+          <p>Genera y recuerda contraseñas únicas, largas y aleatorias para cada servicio. Si un sitio es hackeado, los demás están seguros.</p>
+          <div class="tool-tags">
+            <span class="tool free">Bitwarden (gratis, código abierto)</span>
+            <span class="tool free">KeePassXC (gratis, offline)</span>
+            <span class="tool paid">1Password</span>
+          </div>
+          <div class="do-dont">
+            <div class="dont">❌ "Contraseña123" en todos lados</div>
+            <div class="do">✅ "Kj#9mP$2xQr&amp;vL8n" única por sitio</div>
+          </div>
+        </div>
+
+        <div class="prev-card highlight">
+          <div class="prev-icon">📱</div>
+          <h3>Autenticación de 2 Factores (2FA)</h3>
+          <p>Segunda capa de seguridad. Aunque roben tu contraseña, no podrán entrar sin el código de tu teléfono.</p>
+          <div class="tool-tags">
+            <span class="tool free">Aegis (Android, gratis)</span>
+            <span class="tool free">Raivo (iPhone, gratis)</span>
+            <span class="tool paid">YubiKey (llave física)</span>
+          </div>
+          <div class="priority-list">
+            <div class="priority high">🔴 Email principal — CRÍTICO</div>
+            <div class="priority high">🔴 Banco y pagos — CRÍTICO</div>
+            <div class="priority med">🟡 Redes sociales — Importante</div>
+          </div>
+        </div>
+
+        <div class="prev-card">
+          <div class="prev-icon">💾</div>
+          <h3>Regla de Backup 3-2-1</h3>
+          <p>La estrategia de respaldo que usan los profesionales de seguridad:</p>
+          <div class="rule-321">
+            <div class="rule-row">
+              <span class="rule-num">3</span>
+              <span>Copias totales de tus datos</span>
+            </div>
+            <div class="rule-row">
+              <span class="rule-num">2</span>
+              <span>En dos medios diferentes (ej: disco externo + nube)</span>
+            </div>
+            <div class="rule-row">
+              <span class="rule-num">1</span>
+              <span>Al menos 1 fuera del sitio (nube o en casa de un familiar)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="prev-card">
+          <div class="prev-icon">🔄</div>
+          <h3>Actualizaciones</h3>
+          <p>El 60% de las brechas explotan vulnerabilidades con parche disponible hace meses. Actualiza antes de que te ataquen.</p>
+          <ul class="checklist">
+            <li>✅ Sistema operativo (activa actualizaciones automáticas)</li>
+            <li>✅ Navegador web</li>
+            <li>✅ Antivirus y sus definiciones</li>
+            <li>✅ Router (actualiza el firmware)</li>
+            <li>✅ Apps del móvil</li>
+          </ul>
+        </div>
+
+        <div class="prev-card">
+          <div class="prev-icon">🌐</div>
+          <h3>VPN en Redes Públicas</h3>
+          <p>En WiFi de aeropuertos, cafés o hoteles, tu tráfico puede ser interceptado por otros en la misma red.</p>
+          <div class="tool-tags">
+            <span class="tool free">ProtonVPN (gratis)</span>
+            <span class="tool free">Cloudflare WARP (gratis)</span>
+            <span class="tool paid">Mullvad VPN</span>
+          </div>
+          <div class="do-dont">
+            <div class="dont">❌ Banca en WiFi del aeropuerto sin VPN</div>
+            <div class="do">✅ VPN + HTTPS siempre en red pública</div>
+          </div>
+        </div>
+
+        <div class="prev-card">
+          <div class="prev-icon">🔒</div>
+          <h3>Navegación Segura</h3>
+          <p>Hábitos simples con gran impacto en la seguridad diaria:</p>
+          <ul class="checklist">
+            <li>✅ Verifica el candado 🔒 y HTTPS en la URL</li>
+            <li>✅ Extensión uBlock Origin (bloquea anuncios y malware)</li>
+            <li>✅ No guardes contraseñas en el navegador</li>
+            <li>✅ DNS seguro: usa 1.1.1.1 (Cloudflare) o 9.9.9.9 (Quad9)</li>
+            <li>✅ Cierra sesión en sitios sensibles cuando termines</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="emergency-box">
+        <h3>🚨 ¿Crees que te hackearon? Actúa ahora mismo:</h3>
+        <div class="emergency-steps">
+          <div class="em-step"><span class="em-num">1</span><span>Desconéctate de internet inmediatamente para limitar el daño</span></div>
+          <div class="em-step"><span class="em-num">2</span><span>Cambia las contraseñas desde <strong>otro dispositivo</strong> que no esté comprometido</span></div>
+          <div class="em-step"><span class="em-num">3</span><span>Revisa movimientos bancarios y bloquea tarjetas si hay cargos sospechosos</span></div>
+          <div class="em-step"><span class="em-num">4</span><span>Activa 2FA en todas las cuentas críticas (email, banco, redes sociales)</span></div>
+          <div class="em-step"><span class="em-num">5</span><span>Escanea con antivirus actualizado en modo sin conexión si es posible</span></div>
+          <div class="em-step"><span class="em-num">6</span><span>Reporta a la policía o autoridades cibernéticas si hubo pérdida económica</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== COMENTARIOS ===== -->
+  <section id="comentarios" class="content-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-icon primary">💬</div>
+        <div>
+          <span class="section-tag primary">Comunidad</span>
+          <h2>Comentarios</h2>
+          <p class="section-desc">¿Tienes una experiencia, pregunta o consejo de seguridad? Compártelo.</p>
+        </div>
+      </div>
+
+      <!-- Formulario -->
+      <div class="form-wrapper">
+        <h3>Deja tu comentario</h3>
+        <form id="commentForm" class="comment-form" novalidate>
+          <div class="form-group">
+            <label for="nombreInput">Tu nombre <span class="required">*</span></label>
+            <input
+              type="text"
+              id="nombreInput"
+              placeholder="Ej: Ana García"
+              maxlength="50"
+              autocomplete="name"
+              required
+            >
+            <span class="field-hint">Entre 2 y 50 caracteres</span>
+            <span class="field-error" id="nombreError" aria-live="polite"></span>
+          </div>
+          <div class="form-group">
+            <label for="mensajeInput">Tu comentario <span class="required">*</span></label>
+            <textarea
+              id="mensajeInput"
+              placeholder="Comparte tu experiencia, pregunta o consejo sobre seguridad informática..."
+              maxlength="500"
+              rows="4"
+              required
+            ></textarea>
+            <div class="textarea-footer">
+              <span class="field-error" id="mensajeError" aria-live="polite"></span>
+              <span class="char-count" id="charCount">0 / 500</span>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary" id="submitBtn">
+            Publicar comentario
+          </button>
+          <div id="formMessage" class="form-message" role="alert" style="display:none"></div>
+        </form>
+      </div>
+
+      <!-- Lista de comentarios -->
+      <div class="comments-section">
+        <div class="comments-header">
+          <h3>Comentarios de la comunidad</h3>
+          <span id="commentCount" class="comment-count-badge"></span>
+        </div>
+        <div id="commentsLoader" class="comments-loader">
+          <div class="spinner"></div>
+          <p>Cargando comentarios...</p>
+        </div>
+        <div id="commentsList" class="comments-list"></div>
+        <div id="noComments" class="no-comments" style="display:none">
+          <p>🛡️ Sé el primero en comentar. Tu experiencia puede ayudar a otros.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span>🛡️</span>
+          <span>CiberSeguridad</span>
+        </div>
+        <p>Información educativa sobre seguridad informática. Comparte para proteger a más personas.</p>
+        <nav class="footer-links">
+          <a href="#phishing">Phishing</a>
+          <a href="#malware">Malware</a>
+          <a href="#ingenieria-social">Ing. Social</a>
+          <a href="#prevencion">Prevención</a>
+          <a href="#comentarios">Comentarios</a>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <p>🔒 Contenido educativo — Usa este conocimiento para protegerte y proteger a quienes te rodean.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Firebase app.js — debe ser type="module" -->
+  <script type="module" src="app.js"></script>
+</body>
+</html>
