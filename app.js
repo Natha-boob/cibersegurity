@@ -281,6 +281,17 @@ function initNavbar() {
       toggle.setAttribute('aria-expanded', 'false');
     });
   });
+
+  // Link "♿ Accesibilidad" del nav → abre el panel de Lengua de Señas
+  const navA11yLink = document.getElementById('navA11yLink');
+  if (navA11yLink) {
+    navA11yLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      links.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+      openLSEPanel();
+    });
+  }
 }
 
 // ============================================================
@@ -297,4 +308,175 @@ function initSmoothScroll() {
       window.scrollTo({ top, behavior: 'smooth' });
     });
   });
+}
+
+// ============================================================
+//  ACCESIBILIDAD — WCAG 2.1 / Braille / LSE
+// ============================================================
+
+// ── Barra de accesibilidad ──────────────────────────────────
+(function initA11yBar() {
+  const toggle     = document.getElementById('a11yToggle');
+  const panel      = document.getElementById('a11yPanel');
+  const btnText    = document.getElementById('btnTextSize');
+  const btnContrast= document.getElementById('btnContrast');
+  const btnLSE     = document.getElementById('btnLSE');
+  const btnReset   = document.getElementById('btnReset');
+
+  if (!toggle) return;
+
+  // Abrir / cerrar panel
+  toggle.addEventListener('click', () => {
+    const isOpen = !panel.hidden;
+    panel.hidden = isOpen;
+    toggle.setAttribute('aria-expanded', !isOpen);
+  });
+
+  // Cerrar con Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !panel.hidden) {
+      panel.hidden = true;
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.focus();
+    }
+  });
+
+  // ── Texto grande ──
+  const A11Y_TEXT   = 'a11y_textLarge';
+  const A11Y_CONT   = 'a11y_highContrast';
+
+  function applyTextSize(on) {
+    document.body.classList.toggle('text-large', on);
+    btnText.setAttribute('aria-pressed', on);
+    btnText.style.fontWeight = on ? '700' : '';
+  }
+  function applyContrast(on) {
+    document.body.classList.toggle('high-contrast', on);
+    btnContrast.setAttribute('aria-pressed', on);
+    btnContrast.style.fontWeight = on ? '700' : '';
+  }
+
+  // Restaurar preferencias guardadas
+  applyTextSize(localStorage.getItem(A11Y_TEXT) === '1');
+  applyContrast(localStorage.getItem(A11Y_CONT) === '1');
+
+  btnText.addEventListener('click', () => {
+    const on = !document.body.classList.contains('text-large');
+    applyTextSize(on);
+    localStorage.setItem(A11Y_TEXT, on ? '1' : '0');
+  });
+
+  btnContrast.addEventListener('click', () => {
+    const on = !document.body.classList.contains('high-contrast');
+    applyContrast(on);
+    localStorage.setItem(A11Y_CONT, on ? '1' : '0');
+  });
+
+  // Abre el panel LSE desde la barra
+  btnLSE.addEventListener('click', () => {
+    panel.hidden = true;
+    toggle.setAttribute('aria-expanded', 'false');
+    openLSEPanel();
+    btnLSE.setAttribute('aria-pressed', 'true');
+  });
+
+  // Restablecer todo
+  btnReset.addEventListener('click', () => {
+    applyTextSize(false);
+    applyContrast(false);
+    localStorage.removeItem(A11Y_TEXT);
+    localStorage.removeItem(A11Y_CONT);
+    btnLSE.setAttribute('aria-pressed', 'false');
+    // Anuncio para lectores de pantalla
+    announceA11y('Preferencias de accesibilidad restablecidas.');
+  });
+})();
+
+// ── Panel de Lengua de Señas ────────────────────────────────
+const lsePanel   = document.getElementById('lsePanel');
+const lseOverlay = document.getElementById('lseOverlay');
+const lseClose   = document.getElementById('lseClose');
+
+function openLSEPanel() {
+  if (!lsePanel) return;
+  lsePanel.classList.add('open');
+  lsePanel.setAttribute('aria-hidden', 'false');
+  lseOverlay.classList.add('active');
+  lseOverlay.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+  // Focus al panel para lectores de pantalla
+  lsePanel.focus();
+}
+
+function closeLSEPanel() {
+  if (!lsePanel) return;
+  lsePanel.classList.remove('open');
+  lsePanel.setAttribute('aria-hidden', 'true');
+  lseOverlay.classList.remove('active');
+  lseOverlay.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+  // Devolver el foco al botón que lo abrió
+  const trigger = document.getElementById('navA11yLink') || document.getElementById('btnLSE');
+  if (trigger) trigger.focus();
+}
+
+if (lseClose)   lseClose.addEventListener('click', closeLSEPanel);
+if (lseOverlay) lseOverlay.addEventListener('click', closeLSEPanel);
+
+// (El botón openLSEFromSection fue eliminado — el panel se abre desde el nav y la barra ♿)
+
+// Cerrar con Escape
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && lsePanel && lsePanel.classList.contains('open')) {
+    closeLSEPanel();
+  }
+});
+
+// ── Pestañas del panel LSE ──────────────────────────────────
+(function initLSETabs() {
+  const tabs   = document.querySelectorAll('.lse-tab');
+  const panels = document.querySelectorAll('.lse-video-panel');
+
+  tabs.forEach((tab, i) => {
+    tab.addEventListener('click', () => {
+      // Desactivar todos
+      tabs.forEach(t => {
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
+      });
+      panels.forEach(p => {
+        p.classList.remove('active');
+        p.hidden = true;
+      });
+      // Activar el seleccionado
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
+      panels[i].classList.add('active');
+      panels[i].hidden = false;
+    });
+
+    // Navegación por teclado entre pestañas (←→)
+    tab.addEventListener('keydown', (e) => {
+      let idx = i;
+      if (e.key === 'ArrowRight') idx = (i + 1) % tabs.length;
+      if (e.key === 'ArrowLeft')  idx = (i - 1 + tabs.length) % tabs.length;
+      if (idx !== i) { tabs[idx].click(); tabs[idx].focus(); }
+    });
+  });
+})();
+
+// ── Live region para anuncios a lectores de pantalla ────────
+let announceEl = null;
+
+function announceA11y(msg) {
+  if (!announceEl) {
+    announceEl = document.createElement('div');
+    announceEl.setAttribute('aria-live', 'polite');
+    announceEl.setAttribute('aria-atomic', 'true');
+    announceEl.className = 'sr-only';
+    document.body.appendChild(announceEl);
+  }
+  announceEl.textContent = '';
+  // Pequeño timeout para que el lector de pantalla detecte el cambio
+  setTimeout(() => { announceEl.textContent = msg; }, 50);
 }
